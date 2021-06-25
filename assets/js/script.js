@@ -12,13 +12,13 @@ function getWeather () {
         .then(function(response) {
             console.log(response.data[0]);
 
-        var responseContainerEl = document.querySelector('#response-container');
+        // var responseContainerEl = document.querySelector('#response-container');
 
-        responseContainerEl.innerHTML = '';
+        // responseContainerEl.innerHTML = '';
 
-        var weather = document.createElement('weather');
-        weather.setAttribute('src', response.data[0].images.fixed_height.url);
+        // var weather = document.createElement('weather');
+        // weather.setAttribute('src', response.data[0].images.fixed_height.url);
 
-        responseContainerEl.appendChild(weather);
-        })
-}
+        // responseContainerEl.appendChild(weather);
+        });
+// }
