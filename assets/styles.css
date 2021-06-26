@@ -4,8 +4,10 @@ body {
 
 .hero {
     color: blue;
+    background-color: yellow;
 }
 
 .container {
     background-color: beige;
 }
+
