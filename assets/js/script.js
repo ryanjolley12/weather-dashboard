@@ -18,6 +18,7 @@ function getWeather () {
 
         .then(function(response) {
            var cityWeather = response.list[0].weather[0];
+           console.log(cityWeather);
 
         var responseContainerEl = document.querySelector('#response-container');
 
