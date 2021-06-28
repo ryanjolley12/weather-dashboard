@@ -26,7 +26,7 @@ function getWeather () {
            var cityWeather = response.list[0].weather[0];
            console.log(cityWeather);
 
-        var responseContainerEl = document.querySelector('#response-container');
+        var responseContainerEl = document.querySelector('#response-container-main');
 
         responseContainerEl.innerHTML = cityWeather.description;
 
