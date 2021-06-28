@@ -18,14 +18,14 @@
 
     <div class = "hero">
         <h1>Weather Dashboard</h1>
-        <input type="text" id="searchTerm" value="" />
-        <button type="button" class="btn btn-primary">Get Weather!</button>
-        <div id="response-container"></div>
-    
+        <div>
+          <input type="text" id='searchTerm' value="Charleston" />
+        </div>
+        <button type="button" class="btn btn-primary" onclick="getWeather()">Get Weather!</button>
+      <div id="response-container"></div>
     </div>
 
     <div class="container">
-        
 
     <div class="row">
         <div class="col-md-4"><button type="button" class="btn btn-secondary">Atlanta</button></div>
@@ -36,9 +36,9 @@
         <div class="col-md-3 ml-md-auto"><button type="button" class="btn btn-secondary">New York</button></div>
       </div>
       <div class="row">
-        <div class="col-auto mr-auto"><button type="button" class="btn btn-secondary">Denver</button></div>
-        <div class="col-auto"><button type="button" class="btn btn-secondary">San Fransisco</button></div>
-
+        <div class="col-md-5"><button type="button" class="btn btn-secondary">Denver</button></div>
+        <div class="col-md-5 ml-auto"><button type="button" class="btn btn-secondary">San Fransisco</button></div>
+      </div>
     </div>
       
     <script src="assets/js/script.js"></script>

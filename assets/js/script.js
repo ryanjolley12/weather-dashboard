@@ -2,13 +2,14 @@
 //api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key}
 
 function getWeather () {
-    var searchTerm = "Atlanta"
-    //document.querySelector('#searchTerm').value;
+    var searchTerm = document.querySelector('#searchTerm').value;
 
    // fetch ('https://api.openweathermap.org/data/2.5/onecall?lat=33.7490&lon=84.3880' + searchTerm + '&appid=e9b6e06235bbfccb7ce673e86f064221')
 
-    fetch ("https://api.openweathermap.org/data/2.5/forecast?q=" + searchTerm + "&appid=e9b6e06235bbfccb7ce673e86f064221")
-        .then(function(response) {
+    fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + searchTerm + '&appid=e9b6e06235bbfccb7ce673e86f064221')
+       
+       
+         .then(function(response) {
             //console.log(response.json());
             // var data = response.json().data;
             // console.log(data);
@@ -24,11 +25,9 @@ function getWeather () {
 
         responseContainerEl.innerHTML = cityWeather.description;
 
-        var weather = document.createElement('5-Day');
+        var weather = document.createElement("weather");
         weather.setAttribute('src', response.list[0]);
 
         responseContainerEl.appendChild(weather);
         });
- }
-
- getWeather();
+    }
