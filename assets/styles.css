@@ -1,7 +1,7 @@
 body {
     color: blue;
     font-size: larger;
-    
+
 }
 
 .hero {
@@ -11,7 +11,7 @@ body {
 }
 
 .container {
-    background-color: beige;
+    background-color: yellow;
     width: 100%;
 
 }
