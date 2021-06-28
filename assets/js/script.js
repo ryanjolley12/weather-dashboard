@@ -36,3 +36,18 @@ function getWeather () {
         responseContainerEl.appendChild(weather);
         });
     }
+
+
+    function atlanta () {
+        fetch('https://api.openweathermap.org/data/2.5/forecast?q="atlanta"&appid=e9b6e06235bbfccb7ce673e86f064221')
+
+        .then(function(response) {
+            return response.json();
+        })
+
+        .then(function(response) {
+            var atlantaWeather = response.list[0].weather[0];
+            console.log(atlantaWeather);
+
+         });
+    }
