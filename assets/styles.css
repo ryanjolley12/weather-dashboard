@@ -1,7 +1,7 @@
 body {
-    color: blue;
+    color: white;
     font-size: larger;
-
+    
 }
 
 .hero {
@@ -11,7 +11,7 @@ body {
 }
 
 .container {
-    background-color: yellow;
+    background-color:green;
     width: 100%;
 
 }
@@ -24,4 +24,8 @@ body {
 
 .storage-container {
     background-color: blue;
+}
+
+.container-city {
+    color: red;
 }

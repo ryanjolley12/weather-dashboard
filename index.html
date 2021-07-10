@@ -7,28 +7,93 @@
     <title>Weather Dashboard</title>
     <link
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
-
-
-    <link rel="stylesheet"
-    href="assets/styles.css" />
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="assets/styles.css"/>
 </head>
 <body>
 
-    <div class = "hero">
+    <div class = "container bg-dark text-white border py-3 my-3">
         <h1>Weather Dashboard</h1>
-        <div>
-          <input type="text" class="search-term" id="searchTerm" value="" placeholder="City" />
-        <button type="button" class="btn btn-primary" id="search-button" onclick="getWeather()">Get Weather!</button>
+    </div>
+
+    <div class = "jumbotron">
+    <h1 class= "lead text-dark"> Search for a City: </h1>
+    <div>
+      <input type="text" class="search-term" id="searchTerm" value="" placeholder="City" />
+    <button type="button" class="btn btn-primary" id="search-button" onclick="getWeather()">Get Weather!</button>
+  </div>
+    </div>
+
+<!-----------------------------FIVE DAY CARDS: DATE, ICON, TEMP, WIND, HUMIDITY -------------------------------> 
+
+
+<!----------------------EXAMPLE CARD--------------------->
+    <div class="card-deck">
+      <div class="card bg-dark">
+          <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor.</p>
+          </div>
+          <div class="card-footer">
+              <small class="text-muted">Last updated 3 mins ago</small>
+          </div>
       </div>
 
+<!------------COPY/PASTE FROM EXAMPLE --------------------->
+
+      <div class="card bg-dark">
+          <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Vestibulum id metus ac nisl bibendum nibh scelerisque non purus in suspendisse.</p>
+          </div>
+          <div class="card-footer">
+              <small class="text-muted">Last updated 3 mins ago</small>
+          </div>
+      </div>
+      <div class="card bg-dark">
+          <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Pulvinar leo id risus enim. Bibendum varius tincidunt pellentesque malesuada in.</p>
+          </div>
+          <div class="card-footer">
+              <small class="text-muted">Last updated 3 mins ago</small>
+          </div>
+      </div>
+      <div class="card bg-dark">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Vestibulum id metus ac nisl bibendum nibh scelerisque non purus in suspendisse.</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
     </div>
+    <div class="card bg-dark">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Pulvinar leo id risus enim. Bibendum varius tincidunt pellentesque malesuada in.</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+    </div>
+</div>
+
+  </div>
+
+
+
+
+
+
+      
+
 
     <div class="storage-container">
 
     <div class="row">
-        <div class="col-md-4"><button type="button" class="btn btn-secondary" onclick="atlanta()">Atlanta</button></div>
+        <div class="col-md-4"><button type="button" class="btn btn-secondary" id="searchAtlanta" onclick="atlanta()">Atlanta</button>
+        <div id="atlResponse"><h3> Atlanta weather here </h3></div> </div>
         <div class="col-md-4 ml-auto"><button type="button" class="btn btn-secondary" onclick="austin()">Austin</button></div>
       </div>
       <div class="row">
@@ -38,6 +103,18 @@
       <div class="row">
         <div class="col-md-5"><button type="button" class="btn btn-secondary">Denver</button></div>
         <div class="col-md-5 ml-auto"><button type="button" class="btn btn-secondary">San Fransisco</button></div>
+      </div>
+    </div>
+
+    <div class="content col-9">
+      <div class="row">
+        <div class="container-city" id="response-container-0">
+          <h2 class="city">City</h2>
+          <p class="population">Population</p>
+          <p class="sunrise">Sunrise</p>
+          <p class="sunset">Sunset</p>
+          <p class="timezone">Timezone</p>
+        </div> 
       </div>
     </div>
       
@@ -96,5 +173,7 @@
     
 
     <script src="assets/js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
