@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Dashboard</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+
+<body>
+
+  <div class="container bg-dark text-white border py-3 my-3">
+    <h1>Weather Dashboard</h1>
+  </div>
+  <!------------------SEARCH---------------------------->
+
+  <div class="jumbotron">
+    <h2 class="text-dark"> Search for a City: </h1>
+      <div>
+        <input type="text" class="search-term" id="searchTerm" value="" placeholder="Enter City Here" />
+        <button type="button" class="btn btn-primary" id="search-button">Search!</button>
+
+      </div>
+  </div>
+
+  <!-------------RCENTLY VIEWED------------------->
+
+  <main class="row">
+    <div class="sidebar col-4">
+      <h2 class="text-dark">Recently Viewed</h2>
+
+  <!--BUTTONS-->
+
+      <div class="fiveDay" id="fiveDay"></div>
+      <div class="searchHistory"></div>
+
+    </div>
+  
+
+
+  <!----------------------CITY WEATHER ------------------------>
+
+  <div class="container col-sm bg-light text-dark border py-3 my-3">
+      <h1 id="city">City:</h1>
+      <h1 id="date">Date:</h1>
+      <p id="city-temp">Temp:</p>
+      <p id="city-wind">Wind:</p>
+      <p id="city-humidity">Humidity:</p>
+      <p id="city-uv">UV Index:</p>
+    </div>
+  </div>
+
+  <!----------------------FIVE DAY CARDS: DATE, ICON, TEMP, WIND, HUMIDITY ------------------------------->
+  <!----------------------EXAMPLE CARD--------------------->
+  <div class="container row">
+    <div class="col-12">
+      <h3 class="text-dark">Five-Day Forecast</h2>
+
+        <div class="card-deck">
+          <div class="card col s4 md6 13 bg-dark">
+            <div class="card-body" id="conditions--">
+              <h5 class="card-title" id="card-date-1"></h5>
+              <img class="card-icon" id="wicon-1" src="">
+              <p class="card-temp" id="card-temp-1"></p>
+              <p class="card-wind" id="wind-1"></p>
+              <p class="card-humidity" id="humid-1"></p>
+            </div>
+
+          </div>
+
+          <!------------COPY/PASTE FROM EXAMPLE --------------------->
+
+          <div class="card col s4 md6 13 bg-dark">
+            <div class="card-body" id="conditions">
+              <h5 class="card-title" id="card-date-2"></h5>
+           <h5 class="card-title" id="card-date-2"></h5>
+              <img class="card-icon" id="wicon-2" src="">
+              <p class="card-temp" id="card-temp-2"></p>
+              <p class="card-wind" id="wind-2"></p>
+              <p class="card-humidity" id="humid-2"></p>
+            </div>
+          </div>
+
+          <div class="card col s4 md6 13 bg-dark">
+            <div class="card-body" id="conditions">
+              <h5 class="card-title" id="card-date-3"></h5>
+              <h5 class="card-title" id="card-date-3"></h5>
+              <img class="card-icon" id="wicon-3" src="">
+              <p class="card-temp" id="card-temp-3"></p>
+              <p class="card-wind" id="wind-3"></p>
+              <p class="card-humidity" id="humid-3"></p>
+            </div>
+          </div>
+
+          <div class="card col s4 md6 13 bg-dark">
+            <div class="card-body" id="conditions">
+              <h5 class="card-title" id="card-date-4"></h5>
+              <h5 class="card-title" id="card-date-4"></h5>
+              <img class="card-icon" id="wicon-4" src="">
+              <p class="card-temp" id="card-temp-4"></p>
+              <p class="card-wind" id="wind-4"></p>
+              <p class="card-humidity" id="humid-4"></p>
+            </div>
+          </div>
+
+          <div class="card col s4 md6 13 bg-dark">
+            <div class="card-body" id="conditions">
+              <h5 class="card-title" id="card-date-5"></h5>
+              <h5 class="card-title" id="card-date-5"></h5>
+              <img class="card-icon" id="wicon-5" src="">
+              <p class="card-temp" id="card-temp-5"></p>
+              <p class="card-wind" id="wind-5"></p>
+              <p class="card-humidity" id="humid-5"></p>
+            </div>
+          </div>
+        </div>
+    </div>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="assets/js/script.js"></script>
+
+</body>
+
+</html>

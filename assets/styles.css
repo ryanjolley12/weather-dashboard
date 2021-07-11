@@ -1,0 +1,19 @@
+body {
+    color: white;
+    font-size: larger;
+    
+}
+
+.hero {
+    color: blue;
+    background-color: yellow;
+    padding: 15px;
+}
+
+
+#searchTerm {
+    border-radius: 5px;
+    width: 25%;
+    height: 30px;   
+}
+
