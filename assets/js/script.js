@@ -1,116 +1,120 @@
-// 5-DAY --create a new feetch function for this but get it to run in getWeatheer
-//api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key}
+// 
 
-function searchFunction() {
-    document.querySelector('.search-term').value = '';
-}
-searchFunction()
-
-
-var searchButton = document.getElementById("search-button");
-
-searchButton.addEventListener("keyup", function (event) {
-    if (event.keyCode === 13) {
-        event.preventDefault();
-    }
-});
-
-var city = document.querySelector('.city')
-var population = document.querySelector('.population')
-var sunrise = document.querySelector('.sunrise')
-var sunset = document.querySelector('sunset')
-var timezone = document.querySelector('.timezone')
+var key = "e9b6e06235bbfccb7ce673e86f064221";
+var searchButtonEl = document.getElementById("search-button")
+var searchTerm = document.getElementById("searchTerm")
+var city = document.getElementById("city");
+var date = document.getElementById("date");
+var cityTemp = document.getElementById("city-temp");
+var cityWind = document.getElementById("city-wind");
+var cityHumidity = document.getElementById("city-humidity");
+var uvindex = document.getElementById("city-uv");
+var fiveDayContainer = document.getElementById("fiveDay");
+var recentlyViewed = $(".searchHistory");
 
 
+function getWeather(searchTerm) {
+
+    fetch("https://api.openweathermap.org/data/2.5/weather?q=" + searchTerm + "&appid=" + key)
+
+    .then(response => response.json())
+    .then(data => {                                   /// get other pieces of data from JSON 
+        var windValue = data["wind"]["speed"] + "MPH";
+        var humidValue = data["main"]["humidity"];
+        var nameValue = data["name"];
+        var tempValue = Math.round(((parseFloat(data["main"]["temp"]) - 273.15) * 1.8) + 32) + "&deg";
+        var currentHour = moment.unix(data.dt).format("MMMM Do YYYY");     // moment to format date
+
+        city.innerHTML = nameValue;                               /// add new weather data to innerhtmls
+        date.innerHTML = currentHour;
+        cityTemp.innerHTML = "Temp: " + tempValue + "F";
+        cityWind.innerHTML = "Wind Speed: " + windValue;
+        cityHumidity.innerHTML = "Humidity: " + humidValue + "%";
 
 
-function getWeather() {
+// SECOND API CALL TO GATHER LONGITUDE AND LATITUDE 
 
-    var searchTerm = document.querySelector("#searchTerm").value;
+            /// second api call to gather latitude, longitude 
+            fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=e9b6e06235bbfccb7ce673e86f064221`)
+                .then(response => response.json())             // format response to JSON
+                .then(data => {
 
-    // fetch ('https://api.openweathermap.org/data/2.5/onecall?lat=33.7490&lon=84.3880' + searchTerm + '&appid=e9b6e06235bbfccb7ce673e86f064221')
+                    var uvValue = data.current.uvi;             //// get UVvalue from JSON data
+                    uvindex.innerHTML = "UV Index: " + uvValue;
 
+                    if (uvValue > 0 && uvValue <= 3.5) {          /// set colors accordingly to UV indexes
+                        $(`#uv-color`).addClass("low");
+                    } else if (uvValue > 3.5 && uvValue <= 6.5) {
+                        $(`#uv-color`).addClass("moderate");
+                    } else if (uvValue > 6.5 && uvValue <= 10) {
+                        $(`#uv-color`).addClass("high");
+                    }
 
+                    // create array for the five days then loop through //
+                    var fiveDay = [1, 2, 3, 4, 5];
+                    for (var i = 0; i < fiveDay.length; i++) {
+                        /// use moment to format date 
+                        var cardDate = moment.unix(data.daily[i].dt).format('MM/DD/YY');
+                        var dateEl = document.getElementById(`card-date-${fiveDay[i]}`);
+                        dateEl.innerHTML = cardDate;   // insert date to card 
 
-    // Make a fetch request using the city name --- gives back a data. log that data, traverse through it, and see how to find lat and lon
-    // data.coord.lat/lon
-    // In the response of that fetch request, grab lat and lon, and make once call api fetch request
-    // in the data that comes back from one call api request, you have all the information that you need
-    // traverse the data, grab temp, humidity, uvi index and display appropriately
-    // make a for loop, to go through daily array and grab all thei infromation 
+                    }
 
+                    // Insert Data in Cards
+                    var cardIndex = [1, 2, 3, 4, 5];
 
+                    for (var i = 0; i < cardIndex.length; i++) {
 
-    fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + searchTerm + '&appid=e9b6e06235bbfccb7ce673e86f064221')
+                        var tempDay = Math.round(((parseFloat(data['hourly'][i]['temp']) - 273.15) * 1.8) + 32) + '&deg' + 'F';
+                        var tempEl = document.getElementById(`card-temp-${cardIndex[i]}`);
+                        tempEl.innerHTML = `Temp: ${tempDay}`;
 
+                        var iconcode = data.daily[0].weather[0].icon;
+                        var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+                        $(`#wicon-${cardIndex[i]}`).attr('src', iconurl);
 
-        .then(function (response) {
-           //console.log(response.json());
-            //var data = response.json().data;
+                        var windDay = data['daily'][i]['wind_speed'] + 'MPH';
+                        var windEl = document.getElementById(`wind-${cardIndex[i]}`);
+                        windEl.innerHTML = `Wind: ${windDay}`;
 
-            return response.json();
+                        var humidDay = data['daily'][i]['humidity'];
+                        var humidEl = document.getElementById(`humid-${cardIndex[i]}`);
+                        humidEl.innerHTML = `Humidity: ${humidDay}%`;
 
+                    }
 
-        })
-
-        .then(function (response) {
-            //console.log(response)
-
-            var cityWeather = response.list[0].weather[0];
-          //console.log(cityWeather);
-
-            var responseContainerEl = document.querySelector('#response-container-main');
-
-            responseContainerEl.innerHTML = cityWeather.description;
-
-            var weather = document.createElement("weather");
-            weather.setAttribute('src', response.list[0]);
-
-            responseContainerEl.appendChild(weather);
-        
-    });
-
-
-
-//FETCH USING ONECALL FOR THE FIVE DAY FORECAST 
-function fiveDay () {
-
-    fetch (`https://api.openweathermap.org/data/2.5/onecall?lat=${response.city.coord.lat}&lon=${response.city.coord.lon}&appid=&appid=e9b6e06235bbfccb7ce673e86f064221`)
-
-    .then(function(response) {
-        //console.log(response.json());
-        return response.json();
-
-    })
-
-    .then(function(response) {
-        console.log(response)
-    }) 
-
-}
-
-
-
-function atlanta() {
-
-    fetch('https://api.openweathermap.org/data/2.5/forecast?q=Atlanta&appid=e9b6e06235bbfccb7ce673e86f064221')
-
-        .then(function (response) {
-            return response.json();
-        })
-
-        .then(function (response) {
-            var atlantaWeather = response.list[0].weather[0];
-            console.log(atlantaWeather);
-
-            var responseContainerEl = document.querySelector('#atlResponse');
-            responseContainerEl.innterHTML = atlantaWeather.main;
-
-            var atl = document.createElement("text");
-            atl.setAttribute('src', response.list[0]);
-            console.log(atl);
-
-            responseContainerEl.appendChild(atl);
-
+                })
         });
-    }}
+
+}
+
+// local storage for cities searched for 
+if (window.localStorage) {
+    var saveCity = document.getElementById("searchTerm");
+    saveCity.value = localStorage.getItem("searchTerm");
+
+    saveCity.addEventListener("input", function () {
+        localStorage.setItem("searchBar", saveCity.value);
+    }, false)
+}
+
+function getSearchHistory() {
+    searchHistoryEl.empty();
+    let searchHistoryArr = JSON.parse(localStorage.getItem("searchBar"));
+    for (let i = 0; i < searchHistoryArr.length; i++) {
+        // put newListItem in loop so we make new element for each array index 
+        var newListItem = $("<li>").attr("class", "searchCity");
+        newListItem.text(searchHistoryArr[i]);
+        searchHistoryEl.prepend(newListItem);
+    }
+}
+
+searchButtonEl.addEventListener('click', function () {
+    getWeather(searchTerm.value);
+
+    var btn = document.createElement("button");
+    btn.innerHTML = searchTerm.value;
+
+    document.querySelector('fiveDay').appendChild(btn);
+
+});

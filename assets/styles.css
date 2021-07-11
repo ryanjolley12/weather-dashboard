@@ -10,11 +10,6 @@ body {
     padding: 15px;
 }
 
-.container {
-    background-color:green;
-    width: 100%;
-
-}
 
 #searchTerm {
     border-radius: 5px;
@@ -22,10 +17,3 @@ body {
     height: 30px;   
 }
 
-.storage-container {
-    background-color: blue;
-}
-
-.container-city {
-    color: red;
-}
