@@ -115,6 +115,10 @@ searchButtonEl.addEventListener('click', function () {
     var btn = document.createElement("button");
     btn.innerHTML = searchTerm.value;
 
-    document.querySelector('fiveDay').appendChild(btn);
+    document.getElementById("fiveDay").appendChild(btn);
+    btn.setAttribute('style', 'text-color: #f7f7f7');
+    btn.setAttribute('style', 'background-color: #0275d8');
+ 
+
 
 });
