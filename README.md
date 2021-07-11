@@ -1,6 +1,5 @@
 # Weather-Dashboard
 
-![Screen Shot 2021-07-10 at 9 31 00 PM](https://user-images.githubusercontent.com/83616082/125180320-a270ae80-e1c6-11eb-9388-d87858927719.png)
 ![Screen Shot 2021-07-10 at 9 31 29 PM](https://user-images.githubusercontent.com/83616082/125180323-aa305300-e1c6-11eb-86c5-125731183c6a.png)
 
 
