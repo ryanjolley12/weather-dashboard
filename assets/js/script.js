@@ -1,4 +1,4 @@
-// 
+// WORKED WITH PROJECT 1 GROUP __ ANIDINO AND SHANE 
 
 var key = "e9b6e06235bbfccb7ce673e86f064221";
 var searchButtonEl = document.getElementById("search-button")
@@ -115,6 +115,10 @@ searchButtonEl.addEventListener('click', function () {
     var btn = document.createElement("button");
     btn.innerHTML = searchTerm.value;
 
-    document.querySelector('fiveDay').appendChild(btn);
+    document.getElementById("fiveDay").appendChild(btn);
+    btn.setAttribute('style', 'text-color: #f7f7f7');
+    btn.setAttribute('style', 'background-color: #0275d8');
+ 
+
 
 });
