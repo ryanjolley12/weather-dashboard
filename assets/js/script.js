@@ -1,4 +1,4 @@
-// 
+// WORKED WITH PROJECT 1 GROUP __ ANIDINO AND SHANE 
 
 var key = "e9b6e06235bbfccb7ce673e86f064221";
 var searchButtonEl = document.getElementById("search-button")
